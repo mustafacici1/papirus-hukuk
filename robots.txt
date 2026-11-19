@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://papirushukuk.com/sitemap.xml
