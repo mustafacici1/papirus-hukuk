@@ -91,61 +91,22 @@
       }
     }
 
-    // 5.1. Appointment / Consultation Form Email Integration (FormSubmit.co / Mailto Fallback)
-    const consultationForm = document.getElementById('preConsultationForm');
+    // 5.1. Appointment / Consultation Form (URL Check & Form Handlers)
     const statusMsg = document.getElementById('statusMessage');
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('gonderildi') === '1' && statusMsg) {
+      statusMsg.classList.remove('hidden');
+      window.scrollTo({ top: 220, behavior: 'smooth' });
+    }
+
+    const consultationForm = document.getElementById('preConsultationForm');
     if (consultationForm) {
-      consultationForm.addEventListener('submit', function (e) {
-        e.preventDefault();
+      consultationForm.addEventListener('submit', function () {
         const submitBtn = consultationForm.querySelector('button[type="submit"]');
-        const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
         if (submitBtn) {
           submitBtn.disabled = true;
           submitBtn.innerHTML = '<span>İletiliyor...</span>';
         }
-
-        const firstName = document.getElementById('firstName')?.value || '';
-        const lastName = document.getElementById('lastName')?.value || '';
-        const email = document.getElementById('email')?.value || '';
-        const phone = document.getElementById('phone')?.value || '';
-        const category = document.getElementById('category')?.value || 'Belirtilmedi';
-        const description = document.getElementById('description')?.value || '';
-
-        const formData = {
-          name: `${firstName} ${lastName}`.trim(),
-          email: email,
-          phone: phone,
-          category: category,
-          message: description,
-          _subject: `Yeni Ön Görüşme Randevu Talebi: ${firstName} ${lastName}`
-        };
-
-        // Send via FormSubmit to papirushukuk@gmail.com
-        fetch('https://formsubmit.co/ajax/papirushukuk@gmail.com', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        })
-          .then(response => response.json())
-          .then(data => {
-            if (statusMsg) statusMsg.classList.remove('hidden');
-            consultationForm.reset();
-            window.scrollTo({ top: 220, behavior: 'smooth' });
-          })
-          .catch(error => {
-            // Fallback: Show success to user and trigger mailto
-            if (statusMsg) statusMsg.classList.remove('hidden');
-            window.scrollTo({ top: 220, behavior: 'smooth' });
-          })
-          .finally(() => {
-            if (submitBtn) {
-              submitBtn.disabled = false;
-              submitBtn.innerHTML = originalBtnText;
-            }
-          });
       });
     }
 

@@ -235,7 +235,11 @@
             </div>
           </div>
 
-          <form class="editorial-card p-6 sm:p-8 lg:p-10 flex flex-col gap-8" id="preConsultationForm">
+          <form class="editorial-card p-6 sm:p-8 lg:p-10 flex flex-col gap-8" id="preConsultationForm" action="https://formsubmit.co/papirushukuk@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Yeni Ön Görüşme Randevu Talebi - Papirüs Hukuk">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://papirushukuk.com/on-gorusme.html?gonderildi=1">
             <!-- Section 01 -->
             <div class="border-b border-[var(--border)] pb-4">
               <span class="text-[11px] font-semibold uppercase tracking-[0.18em] text-bronze block mb-1">Kısım 01</span>
@@ -248,28 +252,28 @@
                 <label class="text-xs font-semibold uppercase tracking-[0.14em]" style="color: var(--text);" for="firstName">
                   Ad *
                 </label>
-                <input class="editorial-input" id="firstName" placeholder="Adınız" required type="text"/>
+                <input class="editorial-input" id="firstName" name="Ad" placeholder="Adınız" required type="text"/>
               </div>
 
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold uppercase tracking-[0.14em]" style="color: var(--text);" for="lastName">
                   Soyad *
                 </label>
-                <input class="editorial-input" id="lastName" placeholder="Soyadınız" required type="text"/>
+                <input class="editorial-input" id="lastName" name="Soyad" placeholder="Soyadınız" required type="text"/>
               </div>
 
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold uppercase tracking-[0.14em]" style="color: var(--text);" for="email">
                   E-Posta Adresi *
                 </label>
-                <input class="editorial-input" id="email" placeholder="ornek@alanadi.com" required type="email"/>
+                <input class="editorial-input" id="email" name="Email" placeholder="ornek@alanadi.com" required type="email"/>
               </div>
 
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold uppercase tracking-[0.14em]" style="color: var(--text);" for="phone">
                   Telefon Numarası *
                 </label>
-                <input class="editorial-input" id="phone" placeholder="+90 (5XX) XXX XX XX" required type="tel"/>
+                <input class="editorial-input" id="phone" name="Telefon" placeholder="+90 (5XX) XXX XX XX" required type="tel"/>
               </div>
             </div>
 
@@ -286,15 +290,15 @@
                   Hukuki Konu / Kategori *
                 </label>
                 <div class="relative">
-                  <select class="editorial-input appearance-none pr-10 cursor-pointer" id="category" required>
+                  <select class="editorial-input appearance-none pr-10 cursor-pointer" id="category" name="Hukuki_Konu" required>
                     <option disabled selected value="">Lütfen bir çalışma alanı seçiniz</option>
-                    <option value="danismanlik">Hukuki Danışmanlık</option>
-                    <option value="onleyici">Önleyici Hukuk &amp; Risk Yönetimi</option>
-                    <option value="dava">Dava Takibi &amp; İhtilaf Çözümü</option>
-                    <option value="sirketler">Şirketler &amp; Ticaret Hukuku</option>
-                    <option value="gayrimenkul">Gayrimenkul &amp; Kira Hukuku</option>
-                    <option value="is-hukuku">İş ve Sosyal Güvenlik Hukuku</option>
-                    <option value="diger">Diğer Hukuki Uyuşmazlıklar</option>
+                    <option value="Hukuki Danışmanlık">Hukuki Danışmanlık</option>
+                    <option value="Önleyici Hukuk & Risk Yönetimi">Önleyici Hukuk &amp; Risk Yönetimi</option>
+                    <option value="Dava Takibi & İhtilaf Çözümü">Dava Takibi &amp; İhtilaf Çözümü</option>
+                    <option value="Şirketler & Ticaret Hukuku">Şirketler &amp; Ticaret Hukuku</option>
+                    <option value="Gayrimenkul & Kira Hukuku">Gayrimenkul &amp; Kira Hukuku</option>
+                    <option value="İş ve Sosyal Güvenlik Hukuku">İş ve Sosyal Güvenlik Hukuku</option>
+                    <option value="Diğer Hukuki Uyuşmazlıklar">Diğer Hukuki Uyuşmazlıklar</option>
                   </select>
                   <i data-lucide="chevron-down" class="w-4 h-4 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-bronze"></i>
                 </div>
@@ -307,7 +311,7 @@
                   </label>
                   <span class="text-xs font-mono" style="color: var(--muted);" id="charCounter">0 / 1200</span>
                 </div>
-                <textarea class="editorial-input resize-y" id="description" maxlength="1200" oninput="document.getElementById('charCounter').textContent = this.value.length + ' / 1200';" placeholder="Mevcut durumunuzu, somut olayın kronolojisini ve beklentinizi kısaca özetleyiniz. Lütfen üçüncü kişilere ait hassas kişisel verileri paylaşmayınız." required rows="6"></textarea>
+                <textarea class="editorial-input resize-y" id="description" name="Aciklama" maxlength="1200" oninput="document.getElementById('charCounter').textContent = this.value.length + ' / 1200';" placeholder="Mevcut durumunuzu, somut olayın kronolojisini ve beklentinizi kısaca özetleyiniz. Lütfen üçüncü kişilere ait hassas kişisel verileri paylaşmayınız." required rows="6"></textarea>
                 <p class="text-xs italic mt-1" style="color: var(--muted);">
                   * Ön görüşme için temel vakıaların aktarılması yeterli olup, teferruatlı deliller toplantı esnasında talep edilecektir.
                 </p>
